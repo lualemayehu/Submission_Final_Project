@@ -1,0 +1,32 @@
+# === Core Computer Vision ===
+opencv-python==4.11.0.86
+facenet-pytorch==2.5.3
+mediapipe>=0.10.9
+ultralytics==8.1.32  # YOLOv8 models and vision utilities
+
+# === Machine Learning Framework ===
+torch==2.5.0+cu121         # CUDA 12.1 compatible
+torchvision==0.20.0+cu121
+torchaudio==2.5.0+cu121
+
+# === Audio Processing ===
+PyAudio==0.2.13            # Microphone input
+openai-whisper==20231106  # Speech-to-text via Whisper
+
+# === Screen Capture ===
+mss==9.0.1                 # Cross-platform screen capture
+
+# === Alert and Notification System ===
+gTTS==2.5.1                # Google Text-to-Speech
+pygame==2.5.2              # Audio playback for alerts
+
+# === Report Generation ===
+pdfkit==1.0.0              # HTML to PDF rendering
+Jinja2==3.1.3              # HTML templating
+matplotlib==3.9.0          # Visualization (timeline, heatmap)
+pillow==11.0.0             # Required by matplotlib for image saving
+
+# === System Utilities and Configuration ===
+psutil==7.0.0              # System resource monitoring
+PyYAML==6.0.2              # For reading YAML config files
+numpy==1.26.4              # Numerical operations
