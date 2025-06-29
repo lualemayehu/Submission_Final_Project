@@ -1,0 +1,36 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+{% include "includes/alert.html" %}
+<h2>Verify Image</h2>
+<p>User Phone Number: {{ username }}</p>
+
+
+<form action="{{ url_for('verify') }}" method="post" enctype="multipart/form-data" >
+    <div class="mb-3">
+        <label class="form-label">Select Encrypted Image</label>
+        <input type="file" class="form-control" name="encrypted_image" id="encrypted_image" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-40">
+        Verify Image
+    </button>
+</form>
+
+
+{% if verification_result %}
+    <div class="mt-4">
+        <h4>Verification Result:</h4>
+        <p>{{ verification_result }}</p>
+        <p>{{ original_hash }}</p>
+        <p>{{ decrypted_hash }}</p>
+        
+        {% if image_verified %}
+            <img src="{{ url_for('static', filename='decrypted_image.jpg') }}" alt="Decrypted Image" class="img-fluid mt-3">
+        {% endif %}
+    </div>
+{% endif %}
+
+
+{% endblock %}

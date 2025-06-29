@@ -1,0 +1,59 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+{% include "includes/alert.html" %}
+<h1>Exam Proctoring Report</h1>
+<p><em>Generated at: {{ generated_at }}</em></p>
+
+<button type="submit" class="btn btn-primary w-40">
+        <a href="{{ url_for('download_report') }}" class="btn btn-primary mt-3">
+        📄 Download PDF Report
+        </a>
+    </button> 
+<div class="summary">
+    <h2>Student Information</h2>
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>ID:</strong> {{ student.id }}</p>
+    <p><strong>Course:</strong> {{ student.course }}</p>
+    <p><strong>Exam:</strong> {{ student.exam }}</p>
+</div>
+
+<div>
+    <h2>Violations Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Screenshot</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for v in violations %}
+            <tr>
+                <td>{{ v.timestamp }}</td>
+                <td>{{ v.type }}</td>
+                <td>{{ severity_map[v.type] if v.type in severity_map else 1 }}</td>
+                <td>
+                  {% if v.screenshot %}
+                    <img src="{{ v.screenshot }}" alt="Screenshot" style="max-width:120px; max-height:90px;">
+                  {% else %}
+                    N/A
+                  {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
